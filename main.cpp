@@ -2,6 +2,7 @@
 // IDE Used: VS Code
 // Changed starter file name to main for ease
 
+#include <fstream>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,18 +18,25 @@ int sum_ascii(const string& str) {
 }
 
 int main() {
-  char a = 'A';
-  cout << a << endl;
-  cout << (int)a << endl;
-  int b = 66;
-  cout << b << endl;
-  cout << (char)b << endl;
-
   string input;
   cout << "Enter a string: ";
   cin >> input;
-  cout << "Sum of ASCII values is " << sum_ascii(input) << ".";
+  cout << "Sum of ASCII values is " << sum_ascii(input) << ".\n";
 
+  ifstream file("data.txt");
+  if (!file) {
+    cout << "Error opening the file.\n";
+    return 1;
+  }
+
+  int total = 0;
+  string line;
+
+  while (getline(file, line)) {
+    total += sum_ascii(line);
+  }
+
+  cout << "Total ASCII sum of data file is " << total << ".\n";
   return 0;
 }
 
