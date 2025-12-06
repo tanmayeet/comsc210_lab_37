@@ -10,7 +10,10 @@ int sum_ascii(const string& str) {
   int sum = 0;
 
   for (char c : str) {
+    sum += (int)c;
   }
+
+  return sum;
 }
 
 int main() {
@@ -20,6 +23,11 @@ int main() {
   int b = 66;
   cout << b << endl;
   cout << (char)b << endl;
+
+  string input;
+  cout << "Enter a string: ";
+  cin >> input;
+  cout << "Sum of ASCII values is " << sum_ascii(input) << ".";
 
   return 0;
 }
