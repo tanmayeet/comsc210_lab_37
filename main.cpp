@@ -1,13 +1,15 @@
 // COMSC210 | Lab 37 | Tanmayee Chalamalasetti
 // IDE Used: VS Code
-// Changed starter file name to main for ease
+// Changed file names for ease
 
 #include <fstream>
 #include <iostream>
+#include <list>
+#include <map>
 #include <string>
 using namespace std;
 
-int sum_ascii(const string& str) {
+int gen_hash_index(const string& str) {
   int sum = 0;
 
   for (char c : str) {
@@ -18,10 +20,11 @@ int sum_ascii(const string& str) {
 }
 
 int main() {
-  string input;
-  cout << "Enter a string: ";
-  cin >> input;
-  cout << "Sum of ASCII values is " << sum_ascii(input) << ".\n";
+  // Testing for Milestone 1
+  //   string input;
+  //   cout << "Enter a string: ";
+  //   cin >> input;
+  //   cout << "Sum of ASCII values is " << sum_ascii(input) << ".\n";
 
   ifstream file("data.txt");
   if (!file) {
@@ -29,14 +32,21 @@ int main() {
     return 1;
   }
 
-  int total = 0;
-  string line;
+  map<int, list<string>> hash_table;
 
-  while (getline(file, line)) {
-    total += sum_ascii(line);
+  string code;
+  while (getline(file, code)) {
   }
 
-  cout << "Total ASCII sum of data file is " << total << ".\n";
+  // Milestone 2
+  //   int total = 0;
+  //   string line;
+
+  //   while (getline(file, line)) {
+  //     total += sum_ascii(line);
+  //   }
+  //   cout << "Total ASCII sum of data file is " << total << ".\n";
+
   return 0;
 }
 
