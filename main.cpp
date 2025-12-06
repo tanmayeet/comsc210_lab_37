@@ -46,13 +46,15 @@ int main() {
   // outputs the first 100 entries
   int count = 0;
   for (const auto& entry : hash_table) {
-    cout << count + 1 << ". " << entry.first << ": ";
+    cout << "Index: " << count + 1 << ". Entry: " << entry.first << endl;
 
     for (const auto& code : entry.second) {
       cout << " " << code << " ";
     }
 
-    if (count++ == 100) {
+    cout << endl;
+
+    if (++count == 100) {
       break;
     }
   }
