@@ -26,19 +26,38 @@ int main() {
   //   cin >> input;
   //   cout << "Sum of ASCII values is " << sum_ascii(input) << ".\n";
 
+  // opens and reads data file
   ifstream file("data.txt");
   if (!file) {
     cout << "Error opening the file.\n";
     return 1;
   }
 
+  // initializing hash table
   map<int, list<string>> hash_table;
 
+  // reads each code from data.txt and inserts it into the hash table
   string code;
   while (getline(file, code)) {
+    int index = gen_hash_index(code);
+    hash_table[index].push_back(code);
   }
 
-  // Milestone 2
+  // outputs the first 100 entries
+  int count = 0;
+  for (const auto& entry : hash_table) {
+    cout << count + 1 << ". " << entry.first << ": ";
+
+    for (const auto& code : entry.second) {
+      cout << " " << code << " ";
+    }
+
+    if (count++ == 100) {
+      break;
+    }
+  }
+
+  // Milestone 2 COMPLETE
   //   int total = 0;
   //   string line;
 
