@@ -39,6 +39,9 @@ int main() {
   // reads each code from data.txt and inserts it into the hash table
   string code;
   while (getline(file, code)) {
+    if (code.empty()) {
+      continue;
+    }
     int index = gen_hash_index(code);
     hash_table[index].push_back(code);
   }
@@ -46,13 +49,11 @@ int main() {
   // outputs the first 100 entries
   int count = 0;
   for (const auto& entry : hash_table) {
-    cout << "Index: " << count + 1 << ". Entry: " << entry.first << endl;
-
+    cout << entry.first << ": ";
     for (const auto& code : entry.second) {
-      cout << " " << code << " ";
+      cout << code << " ";
     }
-
-    cout << endl;
+    cout << "\n";
 
     if (++count == 100) {
       break;
